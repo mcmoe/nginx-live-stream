@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  live:
+    # A container that provides live video streaming capabilities
+    image: mcmoe/nginx-live-stream
+    ports:
+      # The HTTP port to access the stream and stats
+      - "80:80"
+      # The The 1935 port is for encoder client like OBS, vlc player or webcam device.
+      # use the url for streaming: rtmp://the.server.tld/live/{{stream name}}
+      - "1935:1935"
+
+# In case you want access to certain folders like /var/rec
+#    volumes:
+#      - host_path:container_path 
